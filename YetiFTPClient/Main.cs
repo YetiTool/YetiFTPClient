@@ -126,5 +126,10 @@ namespace YetiFTPClient
             TransferScreen screen = new TransferScreen((Control)sender);
             screen.Show();
         }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/support/knowledge-base") { UseShellExecute = true });
+        }
     }
 }

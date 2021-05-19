@@ -34,6 +34,8 @@ namespace YetiFTPClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.HelpButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +54,7 @@ namespace YetiFTPClient
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(510, 359);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(510, 319);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -82,7 +84,35 @@ namespace YetiFTPClient
             this.label1.Size = new System.Drawing.Size(261, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "SmartBenches Found";
-
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(65, 522);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 25);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Click here for help";
+            // 
+            // HelpButton
+            // 
+            this.HelpButton.BackColor = System.Drawing.Color.White;
+            this.HelpButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("HelpButton.BackgroundImage")));
+            this.HelpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.HelpButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HelpButton.FlatAppearance.BorderSize = 0;
+            this.HelpButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HelpButton.ForeColor = System.Drawing.Color.Transparent;
+            this.HelpButton.Location = new System.Drawing.Point(12, 515);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(47, 37);
+            this.HelpButton.TabIndex = 6;
+            this.HelpButton.UseVisualStyleBackColor = true;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // MainForm
             // 
@@ -91,6 +121,8 @@ namespace YetiFTPClient
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 561);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -112,6 +144,8 @@ namespace YetiFTPClient
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button HelpButton;
     }
 }
 
