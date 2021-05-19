@@ -1,0 +1,89 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Net.NetworkInformation;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace YetiFTPClient
+{
+    public class NetworkScanner
+    {
+
+        private string defaultGateway;
+        public NetworkScanner(string defaultGateway)
+        {
+            this.defaultGateway = defaultGateway;
+        }
+
+        //Scan all IPs in parallel for a successful return
+        public List<String> GetConnections()
+        {
+            var openIps = new List<String>();
+
+            Parallel.ForEach(GetIPRange(defaultGateway, 105, 108), ip =>
+            {
+                Ping ping = new Ping();
+                PingReply reply = ping.Send(ip, 30);
+                if (reply.Status == IPStatus.Success)
+                    openIps.Add(ip);
+            });
+
+            return openIps;
+        }
+
+        //Get range of IPs on default gateway
+        private List<String> GetIPRange(string defaultGateway, int min, int max)
+        {
+            var ips = new List<string>();
+            for(var i = min; i < max; i++)
+            {
+                ips.Add($"{defaultGateway}.{i}");
+            }
+            return ips;
+        }
+
+        //Get mac address from IP
+        public string GetMacByIp(string ip)
+        {
+            var pairs = this.GetMacIpPairs();
+
+            foreach (var pair in pairs)
+            {
+                if (pair.IpAddress == ip)
+                    return pair.MacAddress;
+            }
+
+            throw new Exception($"Can't retrieve mac address from ip: {ip}");
+        }
+
+        public IEnumerable<MacIpPair> GetMacIpPairs()
+        {
+            System.Diagnostics.Process pProcess = new System.Diagnostics.Process();
+            pProcess.StartInfo.FileName = "arp";
+            pProcess.StartInfo.Arguments = "-a ";
+            pProcess.StartInfo.UseShellExecute = false;
+            pProcess.StartInfo.RedirectStandardOutput = true;
+            pProcess.StartInfo.CreateNoWindow = true;
+            pProcess.Start();
+
+            string cmdOutput = pProcess.StandardOutput.ReadToEnd();
+            string pattern = @"(?<ip>([0-9]{1,3}\.?){4})\s*(?<mac>([a-f0-9]{2}-?){6})";
+
+            foreach (Match m in Regex.Matches(cmdOutput, pattern, RegexOptions.IgnoreCase))
+            {
+                yield return new MacIpPair()
+                {
+                    MacAddress = m.Groups["mac"].Value,
+                    IpAddress = m.Groups["ip"].Value
+                };
+            }
+        }
+
+        public struct MacIpPair
+        {
+            public string MacAddress;
+            public string IpAddress;
+        }
+
+    }
+}
