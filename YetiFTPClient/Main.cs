@@ -23,7 +23,7 @@ namespace YetiFTPClient
             string subnet = defaultGateway.Split(".")[0] + "." + defaultGateway.Split(".")[1] + "." + defaultGateway.Split(".")[2];
 
             //Start scan
-            Scan(subnet);
+            NewScan(subnet);
         }
 
         //This is run once the scan is completed to open the list of devices
@@ -40,7 +40,7 @@ namespace YetiFTPClient
          * Then check for smartbench_name.txt and read name. If no file present (likely an older easycut version),
          * check whether easycut source (main.py) exists.
          */
-        private void Scan(string defaultGateway)
+        /*private void Scan(string defaultGateway)
         {
             NetworkScanner scanner = new NetworkScanner(defaultGateway);
             List<String> scannedAddresses = scanner.GetConnections();
@@ -51,11 +51,10 @@ namespace YetiFTPClient
                 {
                     if (scanner.GetMacByIp(ip).StartsWith("b8-27") || scanner.GetMacByIp(ip).StartsWith("dc-a6-32"))
                     {
-                        FTPConnection connection = new FTPConnection(ip, USERNAME, PASSWORD);
                         string name = connection.GetSmartbenchName();
                         if (name != null)
                         {
-                            AddBench(new SmartBench(ip, name, connection));
+                            AddBench(new SmartBench(ip, name));
                             Debug.WriteLine("Added bench with name: " + name);
                         }
                         else
@@ -72,6 +71,16 @@ namespace YetiFTPClient
                 {
                     Debug.WriteLine("Couldn't get MAC IP from Device: " + ip);
                 }
+            }
+        }*/
+
+        private void NewScan(string defaultGateway)
+        {
+            NetworkScanner scanner = new NetworkScanner(defaultGateway);
+            foreach(SmartBench bench in scanner.GetSmartbenches())
+            {
+                System.Console.WriteLine("Bench added");
+                AddBench(bench);
             }
         }
 
@@ -94,7 +103,7 @@ namespace YetiFTPClient
         private void AddBench(string ip)
         {
             Label label = new Label();
-            Image image = Properties.Resources.pc;
+            Image image = Properties.Resources.pc1;
             label.Size = new Size(100, 150);
             label.Image = image;
             label.Text = ip;

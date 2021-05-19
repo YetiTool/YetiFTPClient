@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -29,6 +31,34 @@ namespace YetiFTPClient
             });
 
             return openIps;
+        }
+
+        public List<SmartBench> GetSmartbenches()
+        {
+            var smartbenches = new List<SmartBench>();
+
+            Parallel.ForEach(GetConnections(), ip =>
+            {
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                try
+                {
+                    socket.Connect(ip, 65432);
+                    byte[] messageReceived = new byte[1024];
+
+                    int byteRecv = socket.Receive(messageReceived);
+                    string message = Encoding.UTF8.GetString(messageReceived, 0, byteRecv);
+
+                    System.Diagnostics.Debug.WriteLine("Message received: " + message);
+                    smartbenches.Add(new SmartBench(ip, message));
+                    socket.Close();
+                }
+                catch
+                {
+                    System.Diagnostics.Debug.WriteLine("Not a smartbench: " + ip);
+                    socket.Close();
+                }
+            });
+            return smartbenches;
         }
 
         //Get range of IPs on default gateway

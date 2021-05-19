@@ -7,13 +7,11 @@
     {
         private string ip;
         private string name;
-        private FTPConnection connection;
 
-        public SmartBench(string ip, string name, FTPConnection connection)
+        public SmartBench(string ip, string name)
         {
             this.ip = ip;
             this.name = name;
-            this.connection = connection;
         }
 
         public string GetName()
@@ -24,11 +22,6 @@
         public string GetIP()
         {
             return this.ip;
-        }
-
-        public FTPConnection GetConnection()
-        {
-            return this.connection;
         }
     }
 }

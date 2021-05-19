@@ -82,7 +82,6 @@ namespace YetiFTPClient
             this.label1.Size = new System.Drawing.Size(261, 29);
             this.label1.TabIndex = 3;
             this.label1.Text = "SmartBenches Found";
-
             // 
             // MainForm
             // 
