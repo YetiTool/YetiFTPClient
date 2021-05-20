@@ -37,6 +37,8 @@ namespace YetiFTPClient
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Status = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IPLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,9 +70,9 @@ namespace YetiFTPClient
             this.SelectedBench.Font = new System.Drawing.Font("Raleway Medium", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.SelectedBench.Location = new System.Drawing.Point(19, 170);
             this.SelectedBench.Name = "SelectedBench";
-            this.SelectedBench.Size = new System.Drawing.Size(173, 29);
+            this.SelectedBench.Size = new System.Drawing.Size(174, 29);
             this.SelectedBench.TabIndex = 0;
-            this.SelectedBench.Text = "Smartbench: ";
+            this.SelectedBench.Text = "SmartBench: ";
             // 
             // panel2
             // 
@@ -107,20 +109,43 @@ namespace YetiFTPClient
             this.Status.Font = new System.Drawing.Font("Raleway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Status.Location = new System.Drawing.Point(19, 504);
             this.Status.Name = "Status";
-            this.Status.Size = new System.Drawing.Size(497, 48);
+            this.Status.Size = new System.Drawing.Size(337, 48);
             this.Status.TabIndex = 5;
             this.Status.Text = "Status: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(-1000, 428);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "label2";
+            // 
+            // IPLabel
+            // 
+            this.IPLabel.AutoSize = true;
+            this.IPLabel.Font = new System.Drawing.Font("Raleway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.IPLabel.Location = new System.Drawing.Point(377, 504);
+            this.IPLabel.Name = "IPLabel";
+            this.IPLabel.Size = new System.Drawing.Size(103, 22);
+            this.IPLabel.TabIndex = 7;
+            this.IPLabel.Text = "IP Address";
             // 
             // TransferScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 561);
+            this.Controls.Add(this.IPLabel);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.Status);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.SelectedBench);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "TransferScreen";
@@ -144,5 +169,7 @@ namespace YetiFTPClient
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label Status;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label IPLabel;
     }
 }

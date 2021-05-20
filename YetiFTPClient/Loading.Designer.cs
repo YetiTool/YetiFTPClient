@@ -91,9 +91,9 @@ namespace YetiFTPClient
             this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.ForeColor = System.Drawing.Color.Transparent;
-            this.HelpButton.Location = new System.Drawing.Point(12, 515);
+            this.HelpButton.Location = new System.Drawing.Point(12, 512);
             this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(47, 37);
+            this.HelpButton.Size = new System.Drawing.Size(40, 40);
             this.HelpButton.TabIndex = 4;
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
@@ -103,7 +103,7 @@ namespace YetiFTPClient
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(65, 522);
+            this.label1.Location = new System.Drawing.Point(58, 520);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(185, 25);
             this.label1.TabIndex = 5;
@@ -121,10 +121,11 @@ namespace YetiFTPClient
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "Loading";
-            this.Text = "Yeti Tool FTP | Loading";
+            this.Text = "Yeti Tool | Loading";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

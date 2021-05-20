@@ -13,8 +13,9 @@ namespace YetiFTPClient
         {
             InitializeComponent();
 
-            SelectedBench.Text += sender.Name;
+            SelectedBench.Text += sender.Text;
             ip = sender.Name;
+            IPLabel.Text = ip;
 
             this.AllowDrop = true;
             this.DragEnter += new DragEventHandler(Panel_DragEnter);

@@ -10,10 +10,6 @@ namespace YetiFTPClient
     public partial class MainForm : Form
     {
 
-        //Default rasp pi ftp
-        private string USERNAME = "pi";
-        private string PASSWORD = "pi";
-
         public MainForm()
         {
             InitializeComponent();

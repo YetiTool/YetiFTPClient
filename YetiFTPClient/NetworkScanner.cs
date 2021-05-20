@@ -22,12 +22,19 @@ namespace YetiFTPClient
         {
             var openIps = new List<String>();
 
-            Parallel.ForEach(GetIPRange(defaultGateway, 105, 108), ip =>
+            Parallel.ForEach(GetIPRange(defaultGateway, 0, 255), ip =>
             {
-                Ping ping = new Ping();
-                PingReply reply = ping.Send(ip, 30);
-                if (reply.Status == IPStatus.Success)
-                    openIps.Add(ip);
+                try
+                {
+                    Ping ping = new Ping();
+                    PingReply reply = ping.Send(ip, 30);
+                    if (reply.Status == IPStatus.Success)
+                        if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4--5f-01"))
+                            openIps.Add(ip);
+                } catch
+                {
+                    System.Diagnostics.Debug.WriteLine("Couldn't ping/get MAC ip");
+                }
             });
 
             return openIps;
