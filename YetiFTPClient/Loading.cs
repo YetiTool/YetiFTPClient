@@ -32,7 +32,8 @@ namespace YetiFTPClient
 
         public static void CloseForm()
         {
-            loading?.Invoke(new CloseDelegate(Loading.CloseFromInternal));
+            if(loading.Visible)
+                loading?.Invoke(new CloseDelegate(Loading.CloseFromInternal));
         }
 
         private static void CloseFromInternal()
