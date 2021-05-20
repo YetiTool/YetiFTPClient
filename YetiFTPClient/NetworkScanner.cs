@@ -18,19 +18,23 @@ namespace YetiFTPClient
         }
 
         //Scan all IPs in parallel for a successful return
+        //Remove last macip for release version
         public List<String> GetConnections()
         {
             var openIps = new List<String>();
 
-            Parallel.ForEach(GetIPRange(defaultGateway, 0, 255), ip =>
+            Parallel.ForEach(GetIPRange(defaultGateway, 17, 20), ip =>
             {
                 try
                 {
                     Ping ping = new Ping();
                     PingReply reply = ping.Send(ip, 30);
                     if (reply.Status == IPStatus.Success)
-                        if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4--5f-01"))
+                        if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01") || GetMacByIp(ip).StartsWith("f0-18"))
+                        {
                             openIps.Add(ip);
+                            System.Diagnostics.Debug.WriteLine(ip);
+                        }
                 } catch
                 {
                     System.Diagnostics.Debug.WriteLine("Couldn't ping/get MAC ip");

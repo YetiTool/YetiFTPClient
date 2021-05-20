@@ -114,7 +114,7 @@ namespace YetiFTPClient
         private void AddBench(SmartBench bench)
         {
             Label label = new Label();
-            Image image = Properties.Resources.pc;
+            Image image = Properties.Resources.sb_icon;
             label.Size = new Size(100, 150);
             label.Image = image;
             label.Text = bench.GetName();
