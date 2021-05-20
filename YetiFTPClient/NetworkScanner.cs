@@ -23,7 +23,7 @@ namespace YetiFTPClient
         {
             var openIps = new List<String>();
 
-            Parallel.ForEach(GetIPRange(defaultGateway, 0, 255), ip =>
+            Parallel.ForEach(GetIPRange(defaultGateway, 17, 20), ip =>
             {
                 try
                 {
