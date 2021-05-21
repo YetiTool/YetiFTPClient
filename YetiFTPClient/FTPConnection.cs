@@ -33,6 +33,8 @@ namespace YetiFTPClient
                     TransferOperationResult result = session.PutFiles(file, "/home/pi/easycut-smartbench/src/jobCache/", false, transferOptions);
                     result.Check();
 
+                    System.Diagnostics.Debug.WriteLine(result.IsSuccess);
+
                     if (result.IsSuccess)
                         return true;
                     else

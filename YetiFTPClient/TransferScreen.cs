@@ -1,5 +1,6 @@
-﻿using System.Drawing;
-using System.IO;
+﻿using System.Diagnostics;
+using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace YetiFTPClient
@@ -32,19 +33,53 @@ namespace YetiFTPClient
 
         private void Panel_DragDrop(object sender, DragEventArgs e)
         {
+            FileDropped(sender, e);
+        }
+
+        private async void FileDropped(object sender, DragEventArgs e)
+        {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             foreach (string file in files)
             {
-                bool success = connection.Upload(file);
+                UploadIcon.Visible = false;
+                UploadingGIF.Visible = true;
+                TransferLabel.Text = "Transferring...";
+                bool success = false;
+                await Task.Run(() =>
+                {
+                    success = connection.Upload(file);
+                });
 
                 if (success)
-                    Status.Text = "Status: " + Path.GetFileName(file) + " successfully transferred";
+                {
+                    UploadingGIF.Visible = false;
+                    CrossIcon.Visible = false;
+                    TickIcon.Visible = true;
+                    TransferLabel.Text = "Transfer Successful";
+                } else
+                {
+                    TickIcon.Visible = false;
+                    UploadingGIF.Visible = false;
+                    CrossIcon.Visible = true;
+                    TransferLabel.Text = "Transfer Failed";
+                }
+
             }
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(new Pen(Brushes.Black), new Rectangle(0, 0, panel2.Width - 1, panel2.Height - 1));
+        }
+
+        private void HelpButton_Click(object sender, System.EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+        }
+
+        private void HelpLabel_Click(object sender, System.EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
         }
     }
 }

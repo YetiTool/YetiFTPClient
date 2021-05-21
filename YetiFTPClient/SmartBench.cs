@@ -1,7 +1,7 @@
 ﻿namespace YetiFTPClient
 {
     /*
-     * Object for each smartbench found - use this ftpconnection object to upload files
+     * Object for each smartbench found
      */
     public class SmartBench
     {

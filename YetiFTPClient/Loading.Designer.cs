@@ -35,7 +35,7 @@ namespace YetiFTPClient
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.HelpButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.HelpLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -98,16 +98,17 @@ namespace YetiFTPClient
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
-            // label1
+            // HelpLabel
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(58, 520);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 25);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Click here for help";
+            this.HelpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.HelpLabel.AutoSize = true;
+            this.HelpLabel.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HelpLabel.Location = new System.Drawing.Point(58, 520);
+            this.HelpLabel.Name = "HelpLabel";
+            this.HelpLabel.Size = new System.Drawing.Size(185, 25);
+            this.HelpLabel.TabIndex = 5;
+            this.HelpLabel.Text = "Click here for help";
+            this.HelpLabel.Click += new System.EventHandler(this.HelpLabel_Click);
             // 
             // Loading
             // 
@@ -117,7 +118,7 @@ namespace YetiFTPClient
             this.ClientSize = new System.Drawing.Size(534, 561);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -125,7 +126,7 @@ namespace YetiFTPClient
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "Loading";
-            this.Text = "Yeti Tool | Loading";
+            this.Text = "Yeti Tool | Loading (v0.1.0)";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -141,6 +142,6 @@ namespace YetiFTPClient
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button HelpButton;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label HelpLabel;
     }
 }

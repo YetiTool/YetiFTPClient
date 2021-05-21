@@ -30,7 +30,7 @@ namespace YetiFTPClient
                     Ping ping = new Ping();
                     PingReply reply = ping.Send(ip, 30);
                     if (reply.Status == IPStatus.Success)
-                        if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01") || GetMacByIp(ip).StartsWith("f0-18"))
+                        if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01"))
                         {
                             openIps.Add(ip);
                             System.Diagnostics.Debug.WriteLine(ip);
@@ -59,13 +59,11 @@ namespace YetiFTPClient
                     int byteRecv = socket.Receive(messageReceived);
                     string message = Encoding.UTF8.GetString(messageReceived, 0, byteRecv);
 
-                    System.Diagnostics.Debug.WriteLine("Message received: " + message);
                     smartbenches.Add(new SmartBench(ip, message));
                     socket.Close();
                 }
                 catch
                 {
-                    System.Diagnostics.Debug.WriteLine("Not a smartbench: " + ip);
                     socket.Close();
                 }
             });

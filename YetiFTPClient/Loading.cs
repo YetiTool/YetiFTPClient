@@ -45,11 +45,14 @@ namespace YetiFTPClient
             }
         }
 
-
-        //TODO: Change URL
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://www.yetitool.com/support/knowledge-base") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+        }
+
+        private void HelpLabel_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
         }
     }
 }

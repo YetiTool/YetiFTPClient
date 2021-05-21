@@ -33,11 +33,13 @@ namespace YetiFTPClient
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.TitleLabel = new System.Windows.Forms.Label();
+            this.HelpLabel = new System.Windows.Forms.Label();
             this.HelpButton = new System.Windows.Forms.Button();
+            this.RetryIcon = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RetryIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -75,26 +77,27 @@ namespace YetiFTPClient
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // TitleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Raleway", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(139, 158);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(256, 29);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Select a SmartBench";
+            this.TitleLabel.Font = new System.Drawing.Font("Raleway", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TitleLabel.Location = new System.Drawing.Point(139, 158);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(256, 29);
+            this.TitleLabel.TabIndex = 3;
+            this.TitleLabel.Text = "Select a SmartBench";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // HelpLabel
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(58, 520);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 25);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Click here for help";
+            this.HelpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.HelpLabel.AutoSize = true;
+            this.HelpLabel.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.HelpLabel.Location = new System.Drawing.Point(58, 520);
+            this.HelpLabel.Name = "HelpLabel";
+            this.HelpLabel.Size = new System.Drawing.Size(185, 25);
+            this.HelpLabel.TabIndex = 7;
+            this.HelpLabel.Text = "Click here for help";
+            this.HelpLabel.Click += new System.EventHandler(this.HelpLabel_Click);
             // 
             // HelpButton
             // 
@@ -114,6 +117,16 @@ namespace YetiFTPClient
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
             // 
+            // RetryIcon
+            // 
+            this.RetryIcon.Image = ((System.Drawing.Image)(resources.GetObject("RetryIcon.Image")));
+            this.RetryIcon.Location = new System.Drawing.Point(482, 512);
+            this.RetryIcon.Name = "RetryIcon";
+            this.RetryIcon.Size = new System.Drawing.Size(40, 40);
+            this.RetryIcon.TabIndex = 8;
+            this.RetryIcon.TabStop = false;
+            this.RetryIcon.Click += new System.EventHandler(this.RetryIcon_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -121,9 +134,10 @@ namespace YetiFTPClient
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 561);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.RetryIcon);
+            this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.HelpButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TitleLabel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -131,10 +145,11 @@ namespace YetiFTPClient
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "MainForm";
-            this.Text = "Yeti Tool | SmartBench job file transfer";
+            this.Text = "Yeti Tool | Select a SmartBench (v0.1.0)";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RetryIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -144,9 +159,10 @@ namespace YetiFTPClient
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label TitleLabel;
+        private System.Windows.Forms.Label HelpLabel;
         private System.Windows.Forms.Button HelpButton;
+        private System.Windows.Forms.PictureBox RetryIcon;
     }
 }
 

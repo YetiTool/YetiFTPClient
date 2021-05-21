@@ -63,19 +63,29 @@ namespace YetiFTPClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap pc {
+        public static System.Drawing.Bitmap CrossIcon {
             get {
-                object obj = ResourceManager.GetObject("pc", resourceCulture);
+                object obj = ResourceManager.GetObject("CrossIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon favicon {
+            get {
+                object obj = ResourceManager.GetObject("favicon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap pc1 {
+        public static System.Drawing.Bitmap RetryIcon {
             get {
-                object obj = ResourceManager.GetObject("pc1", resourceCulture);
+                object obj = ResourceManager.GetObject("RetryIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -86,6 +96,16 @@ namespace YetiFTPClient.Properties {
         public static System.Drawing.Bitmap sb_icon {
             get {
                 object obj = ResourceManager.GetObject("sb_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap TickIcon {
+            get {
+                object obj = ResourceManager.GetObject("TickIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

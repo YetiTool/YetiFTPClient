@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace YetiFTPClient
 {
@@ -16,10 +17,9 @@ namespace YetiFTPClient
 
             //Get default gateway
             string defaultGateway = GetGateway();
-            string subnet = defaultGateway.Split(".")[0] + "." + defaultGateway.Split(".")[1] + "." + defaultGateway.Split(".")[2];
 
             //Start scan
-            NewScan(subnet);
+            NewScan(defaultGateway);
         }
 
         //This is run once the scan is completed to open the list of devices
@@ -31,53 +31,17 @@ namespace YetiFTPClient
             this.Show();
         }
 
-        /*
-         * Get each possible IP on the local network, scan to check whether they're alive, then check for rasp. pi macip.
-         * Then check for smartbench_name.txt and read name. If no file present (likely an older easycut version),
-         * check whether easycut source (main.py) exists.
-         */
-        /*private void Scan(string defaultGateway)
-        {
-            NetworkScanner scanner = new NetworkScanner(defaultGateway);
-            List<String> scannedAddresses = scanner.GetConnections();
-
-            foreach (string ip in scannedAddresses)
-            {
-                try
-                {
-                    if (scanner.GetMacByIp(ip).StartsWith("b8-27") || scanner.GetMacByIp(ip).StartsWith("dc-a6-32"))
-                    {
-                        string name = connection.GetSmartbenchName();
-                        if (name != null)
-                        {
-                            AddBench(new SmartBench(ip, name));
-                            Debug.WriteLine("Added bench with name: " + name);
-                        }
-                        else
-                        {
-                            if (connection.TryConnect())
-                            {
-                                AddBench(ip);
-                                Debug.WriteLine("Added bench with ip: " + ip);
-                            }
-                        }
-                    }
-                }
-                catch
-                {
-                    Debug.WriteLine("Couldn't get MAC IP from Device: " + ip);
-                }
-            }
-        }*/
-
         private void NewScan(string defaultGateway)
         {
             NetworkScanner scanner = new NetworkScanner(defaultGateway);
-            foreach(SmartBench bench in scanner.GetSmartbenches())
+            List<SmartBench> benches = scanner.GetSmartbenches();
+            foreach(SmartBench bench in benches)
             {
-                System.Console.WriteLine("Bench added");
                 AddBench(bench);
             }
+
+            if (benches.Count < 1)
+                TitleLabel.Text = "Couldn't find any SmartBenches";
         }
 
         //Get default gateway
@@ -88,26 +52,13 @@ namespace YetiFTPClient
             {
                 if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
-                    return ip.ToString();
+                    string gateway = ip.ToString();
+                    string defaultGateway = gateway.Split(".")[0] + "." + gateway.Split(".")[1] + "." + gateway.Split(".")[2];
+                    return defaultGateway;
                 }
             }
 
             return null;
-        }
-
-        //Add smartbench to list by IP (no bench name found)
-        private void AddBench(string ip)
-        {
-            Label label = new Label();
-            Image image = Properties.Resources.pc1;
-            label.Size = new Size(100, 150);
-            label.Image = image;
-            label.Text = ip;
-            label.Name = ip;
-            label.Anchor = AnchorStyles.None;
-            label.TextAlign = ContentAlignment.BottomCenter;
-            label.Click += new EventHandler(imageClick);
-            tableLayoutPanel1.Controls.Add(label);
         }
 
         //Add smartbench to list by object of bench storing ip, name and the ftp connection object
@@ -122,7 +73,11 @@ namespace YetiFTPClient
             label.Anchor = AnchorStyles.None;
             label.TextAlign = ContentAlignment.BottomCenter;
             label.Click += new EventHandler(imageClick);
-            tableLayoutPanel1.Controls.Add(label);
+            if(tableLayoutPanel1.InvokeRequired)
+            {
+                tableLayoutPanel1.Invoke(new MethodInvoker(delegate { tableLayoutPanel1.Controls.Add(label); TitleLabel.Text = "Select a SmartBench"; }));
+            } else
+                tableLayoutPanel1.Controls.Add(label);
         }
 
         //Open unique transfer screen on click
@@ -134,7 +89,19 @@ namespace YetiFTPClient
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://www.yetitool.com/support/knowledge-base") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+        }
+
+        private void HelpLabel_Click(object sender, EventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+        }
+
+        private void RetryIcon_Click(object sender, EventArgs e)
+        {
+            tableLayoutPanel1.Controls.Clear();
+            TitleLabel.Text = "Refreshing...";
+            Task.Run(() => { NewScan(GetGateway()); });
         }
     }
 }
