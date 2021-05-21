@@ -10,6 +10,8 @@ Once downloaded, run the "Installer.exe" file and the installer will navigate yo
 
 We currently do not support any operating system other than Windows.
 
+You may also compile the program yourself by downloading the project files, opening the solution and building in Visual Studio.
+
 ## Usage
 
 Before using this software, please ensure you are on the latest version of easycut.
