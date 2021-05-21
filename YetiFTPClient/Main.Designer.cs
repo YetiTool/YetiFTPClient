@@ -80,9 +80,9 @@ namespace YetiFTPClient
             // TitleLabel
             // 
             this.TitleLabel.Font = new System.Drawing.Font("Raleway", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TitleLabel.Location = new System.Drawing.Point(139, 158);
+            this.TitleLabel.Location = new System.Drawing.Point(17, 158);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(256, 29);
+            this.TitleLabel.Size = new System.Drawing.Size(500, 29);
             this.TitleLabel.TabIndex = 3;
             this.TitleLabel.Text = "Select a SmartBench";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
