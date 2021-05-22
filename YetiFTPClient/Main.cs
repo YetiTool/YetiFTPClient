@@ -66,9 +66,10 @@ namespace YetiFTPClient
         {
             Label label = new Label();
             Image image = Properties.Resources.sb_icon;
-            label.Size = new Size(100, 150);
+            label.Size = new Size(150, 150);
             label.Image = image;
             label.Text = bench.GetName();
+            label.Font = new Font("Raleway", 11);
             label.Name = bench.GetIP();
             label.Anchor = AnchorStyles.None;
             label.TextAlign = ContentAlignment.BottomCenter;

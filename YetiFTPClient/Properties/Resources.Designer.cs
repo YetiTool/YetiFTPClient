@@ -93,6 +93,16 @@ namespace YetiFTPClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap sad_face {
+            get {
+                object obj = ResourceManager.GetObject("sad_face", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap sb_icon {
             get {
                 object obj = ResourceManager.GetObject("sb_icon", resourceCulture);

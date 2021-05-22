@@ -97,7 +97,7 @@ namespace YetiFTPClient
             // CrossIcon
             // 
             this.CrossIcon.BackColor = System.Drawing.Color.Transparent;
-            this.CrossIcon.Image = ((System.Drawing.Image)(resources.GetObject("CrossIcon.Image")));
+            this.CrossIcon.Image = global::YetiFTPClient.Properties.Resources.sad_face;
             this.CrossIcon.Location = new System.Drawing.Point(213, 82);
             this.CrossIcon.Name = "CrossIcon";
             this.CrossIcon.Size = new System.Drawing.Size(64, 64);
