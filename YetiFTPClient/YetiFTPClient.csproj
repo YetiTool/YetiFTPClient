@@ -5,7 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
-    <AssemblyName>Yeti Tool FTP</AssemblyName>
+    <AssemblyName>Yeti Tool SmartTransfer</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

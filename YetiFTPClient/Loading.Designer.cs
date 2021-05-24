@@ -126,7 +126,7 @@ namespace YetiFTPClient
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "Loading";
-            this.Text = "Yeti Tool | Loading (v0.1.0)";
+            this.Text = "Yeti Tool SmartTransfer | Loading (v0.1.0)";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

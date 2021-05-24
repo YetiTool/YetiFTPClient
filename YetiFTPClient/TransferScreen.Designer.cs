@@ -213,7 +213,7 @@ namespace YetiFTPClient
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "TransferScreen";
-            this.Text = "Yeti Tool FTP | Transfer Your Files (v0.1.0)";
+            this.Text = "Yeti Tool SmartTransfer | Transfer Your Files (v0.1.0)";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
