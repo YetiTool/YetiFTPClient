@@ -41,7 +41,10 @@ namespace YetiFTPClient
             }
 
             if (benches.Count < 1)
-                TitleLabel.Text = "Couldn't find any SmartBenches";
+                if (TitleLabel.InvokeRequired)
+                    TitleLabel.Invoke(new MethodInvoker(delegate { TitleLabel.Text = "Couldn't find any SmartBenches"; }));
+                else
+                    TitleLabel.Text = "Couldn't find any SmartBenches";
         }
 
         //Get default gateway
