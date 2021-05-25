@@ -57,7 +57,7 @@ namespace YetiFTPClient
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(147, 18);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 119);
+            this.pictureBox1.Size = new System.Drawing.Size(265, 135);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -97,7 +97,7 @@ namespace YetiFTPClient
             // CrossIcon
             // 
             this.CrossIcon.BackColor = System.Drawing.Color.Transparent;
-            this.CrossIcon.Image = global::YetiFTPClient.Properties.Resources.sad_face;
+            this.CrossIcon.Image = ((System.Drawing.Image)(resources.GetObject("CrossIcon.Image")));
             this.CrossIcon.Location = new System.Drawing.Point(213, 82);
             this.CrossIcon.Name = "CrossIcon";
             this.CrossIcon.Size = new System.Drawing.Size(64, 64);
@@ -138,7 +138,7 @@ namespace YetiFTPClient
             // 
             // TransferLabel
             // 
-            this.TransferLabel.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TransferLabel.Font = new System.Drawing.Font("Raleway", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.TransferLabel.Location = new System.Drawing.Point(47, 149);
             this.TransferLabel.Name = "TransferLabel";
             this.TransferLabel.Size = new System.Drawing.Size(403, 80);

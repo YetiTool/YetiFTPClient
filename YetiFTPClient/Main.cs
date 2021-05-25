@@ -74,9 +74,11 @@ namespace YetiFTPClient
             label.Text = bench.GetName();
             label.Font = new Font("Raleway", 11);
             label.Name = bench.GetIP();
-            label.Anchor = AnchorStyles.None;
+            label.ImageAlign = ContentAlignment.MiddleCenter;
             label.TextAlign = ContentAlignment.BottomCenter;
             label.Click += new EventHandler(imageClick);
+
+            new ToolTip().SetToolTip(label, bench.GetFullName());
             if(tableLayoutPanel1.InvokeRequired)
             {
                 tableLayoutPanel1.Invoke(new MethodInvoker(delegate { tableLayoutPanel1.Controls.Add(label); TitleLabel.Text = "Select a SmartBench"; }));

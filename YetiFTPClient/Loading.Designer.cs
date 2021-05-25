@@ -55,7 +55,7 @@ namespace YetiFTPClient
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(135, 13);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 119);
+            this.pictureBox1.Size = new System.Drawing.Size(265, 132);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
@@ -127,6 +127,7 @@ namespace YetiFTPClient
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "Loading";
             this.Text = "Yeti Tool SmartTransfer | Loading (v0.1.0)";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Loading_FormClosed);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

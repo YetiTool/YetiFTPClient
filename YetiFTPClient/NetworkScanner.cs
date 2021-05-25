@@ -59,7 +59,15 @@ namespace YetiFTPClient
                     int byteRecv = socket.Receive(messageReceived);
                     string message = Encoding.UTF8.GetString(messageReceived, 0, byteRecv);
 
-                    smartbenches.Add(new SmartBench(ip, message));
+                    string shortMessage = message;
+                    shortMessage = shortMessage.Replace("\n", "");
+                    if (shortMessage.Length > 18)
+                    {
+                        shortMessage = shortMessage.Substring(0, 18);
+                        shortMessage += "..";
+                    }
+
+                    smartbenches.Add(new SmartBench(ip, shortMessage, message));
                     socket.Close();
                 }
                 catch

@@ -63,17 +63,17 @@ namespace YetiFTPClient
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(71)))), ((int)(((byte)(161)))));
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(-13, 0);
+            this.panel1.Location = new System.Drawing.Point(-3, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(638, 145);
+            this.panel1.Size = new System.Drawing.Size(538, 145);
             this.panel1.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(150, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(137, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 119);
+            this.pictureBox1.Size = new System.Drawing.Size(265, 133);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 

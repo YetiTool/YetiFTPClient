@@ -40,7 +40,7 @@ namespace YetiFTPClient
         {
             if(loading != null)
             {
-                loading.Close();
+                loading.Hide();
                 loading = null;
             }
         }
@@ -53,6 +53,11 @@ namespace YetiFTPClient
         private void HelpLabel_Click(object sender, EventArgs e)
         {
             Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+        }
+
+        private void Loading_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Environment.Exit(1);
         }
     }
 }

@@ -124,6 +124,9 @@
   <data name="sb_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\sb_icon_with_name_dark_blue (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sad_face" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\sad_face.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TickIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\TickIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,7 +142,7 @@
   <data name="upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\upload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sad_face" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\sad_face.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Logo with trademark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Logo with trademark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
