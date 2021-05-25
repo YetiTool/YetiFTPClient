@@ -145,7 +145,7 @@ namespace YetiFTPClient
             this.MaximumSize = new System.Drawing.Size(550, 600);
             this.MinimumSize = new System.Drawing.Size(550, 600);
             this.Name = "MainForm";
-            this.Text = "Yeti Tool SmartTransfer | Select a SmartBench (v0.1.0)";
+            this.Text = "Yeti Tool SmartTransfer | Select a SmartBench";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

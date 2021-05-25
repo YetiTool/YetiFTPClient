@@ -29,6 +29,10 @@ namespace YetiFTPClient
             this.WindowState = FormWindowState.Normal;
             this.Focus();
             this.Show();
+
+            var name = Application.ProductName;
+            var version = Application.ProductVersion;
+            this.Text = String.Format("{0} | Select a SmartBench (v{1})", name, version);
         }
 
         private void NewScan(string defaultGateway)

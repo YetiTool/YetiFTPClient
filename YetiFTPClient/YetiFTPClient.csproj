@@ -6,6 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <AssemblyName>Yeti Tool SmartTransfer</AssemblyName>
+    <Version>0.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

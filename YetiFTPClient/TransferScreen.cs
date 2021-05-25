@@ -14,6 +14,10 @@ namespace YetiFTPClient
         {
             InitializeComponent();
 
+            var name = Application.ProductName;
+            var version = Application.ProductVersion;
+            this.Text = System.String.Format("{0} | Transfer Your Files (v{1})", name, version);
+
             SelectedBench.Text += sender.Text;
             ip = sender.Name;
             IPLabel.Text = ip;

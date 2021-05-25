@@ -19,6 +19,9 @@ namespace YetiFTPClient
         {
             if (loading != null) return;
             loading = new Loading();
+            var name = Application.ProductName;
+            var version = Application.ProductVersion;
+            loading.Text = String.Format("{0} | Loading (v{1})", name, version);
             Thread thread = new Thread(new ThreadStart(Loading.ShowForm));
             thread.IsBackground = true;
             thread.SetApartmentState(ApartmentState.STA);
