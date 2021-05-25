@@ -170,7 +170,7 @@ namespace YetiFTPClient
             this.HelpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HelpLabel.AutoSize = true;
             this.HelpLabel.Font = new System.Drawing.Font("Raleway", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.HelpLabel.Location = new System.Drawing.Point(58, 520);
+            this.HelpLabel.Location = new System.Drawing.Point(53, 520);
             this.HelpLabel.Name = "HelpLabel";
             this.HelpLabel.Size = new System.Drawing.Size(185, 25);
             this.HelpLabel.TabIndex = 9;
@@ -188,9 +188,9 @@ namespace YetiFTPClient
             this.HelpButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.HelpButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.HelpButton.ForeColor = System.Drawing.Color.Transparent;
-            this.HelpButton.Location = new System.Drawing.Point(12, 512);
+            this.HelpButton.Location = new System.Drawing.Point(12, 514);
             this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(40, 40);
+            this.HelpButton.Size = new System.Drawing.Size(35, 35);
             this.HelpButton.TabIndex = 8;
             this.HelpButton.UseVisualStyleBackColor = true;
             this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
