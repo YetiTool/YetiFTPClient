@@ -99,12 +99,12 @@ namespace YetiFTPClient
 
         private void HelpButton_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-sending-jobs-to-smartbench-smarttransfer") { UseShellExecute = true });
         }
 
         private void HelpLabel_Click(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-file-transfer-app") { UseShellExecute = true });
+            Process.Start(new ProcessStartInfo("https://www.yetitool.com/SUPPORT/KNOWLEDGE-BASE/smartbench1-sending-jobs-to-smartbench-smarttransfer") { UseShellExecute = true });
         }
 
         private void RetryIcon_Click(object sender, EventArgs e)
