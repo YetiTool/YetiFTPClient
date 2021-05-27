@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -33,13 +34,14 @@ namespace YetiFTPClient
                         if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01"))
                         {
                             openIps.Add(ip);
-                            System.Diagnostics.Debug.WriteLine(ip);
                         }
                 } catch
                 {
                     System.Diagnostics.Debug.WriteLine("Couldn't ping/get MAC ip");
                 }
             });
+
+            System.Diagnostics.Debug.WriteLine("Found " + openIps.Count + " Pis");
 
             return openIps;
         }
@@ -61,10 +63,9 @@ namespace YetiFTPClient
 
                     string shortMessage = message;
                     shortMessage = shortMessage.Replace("\n", "");
-                    if (shortMessage.Length > 18)
+                    if (shortMessage.Length > 16)
                     {
-                        shortMessage = shortMessage.Substring(0, 18);
-                        shortMessage += "..";
+                        shortMessage = shortMessage.Substring(0, 16);
                     }
 
                     smartbenches.Add(new SmartBench(ip, shortMessage, message));
@@ -72,7 +73,7 @@ namespace YetiFTPClient
                 }
                 catch
                 {
-                    socket.Close();
+                    System.Diagnostics.Debug.WriteLine("Couldn't connect to socket @" + ip);
                 }
             });
             return smartbenches;
