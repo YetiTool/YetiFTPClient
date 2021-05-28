@@ -53,7 +53,7 @@ namespace YetiFTPClient
         {
             string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            string filePath = $"{folderPath}\\sb_logs_{DateTime.Now:dd_mm_yyyy-hh-mm}.txt";
+            string filePath = $"{folderPath}\\SmartTransfer_Scan_Log_{DateTime.Now:dd_mm_yyyy-hh-mm}.txt";
 
             using(StreamWriter writer = File.CreateText(filePath))
             {

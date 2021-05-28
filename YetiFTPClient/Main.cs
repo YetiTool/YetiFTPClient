@@ -59,9 +59,12 @@ namespace YetiFTPClient
             {
                 if (ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
                 {
-                    string gateway = ip.ToString();
-                    string defaultGateway = gateway.Split(".")[0] + "." + gateway.Split(".")[1] + "." + gateway.Split(".")[2];
-                    return defaultGateway;
+                    if(ip.ToString().StartsWith("192"))
+                    {
+                        string gateway = ip.ToString();
+                        string defaultGateway = gateway.Split(".")[0] + "." + gateway.Split(".")[1] + "." + gateway.Split(".")[2];
+                        return defaultGateway;
+                    }
                 }
             }
 

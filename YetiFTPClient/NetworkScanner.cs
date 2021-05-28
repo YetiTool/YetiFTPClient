@@ -24,27 +24,28 @@ namespace YetiFTPClient
 
             Parallel.ForEach(GetIPRange(defaultGateway, 0, 255), ip =>
             {
-                try
-                {
-                    Ping ping = new Ping();
+                Ping ping = new Ping();
 
-                    PingReply reply = ping.Send(ip, 100);
-                    if(reply.Status == IPStatus.Success)
+                PingReply reply = ping.Send(ip, 100);
+                if (reply.Status == IPStatus.Success)
+                {
+                    Logging.TryLog(ip, "Ping was successful: " + ip);
+                    try
                     {
-                        try
+                        if (GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01"))
                         {
-                            if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01"))
-                            {
-                                openIPs.Add(ip);
-                            }
-                        } catch
+                            openIPs.Add(ip);
+                            Logging.TryLog(ip, "IP conformed to MAC prefix: " + ip);
+                        }
+                        else
                         {
-                            Logging.TryLog(ip, "Failed to retrieve MAC IP from device at: " + ip);
+                            Logging.TryLog(ip, $"MAC prefix doesn't conform to list of console MAC prefixes: {GetMacByIp(ip)}");
                         }
                     }
-                } catch
-                {
-                    Logging.TryLog(ip, "Couldn't ping device at: " + ip);
+                    catch
+                    {
+                        Logging.TryLog(ip, "Failed to retrieve MAC IP from device at: " + ip);
+                    }
                 }
             });
 
@@ -74,6 +75,7 @@ namespace YetiFTPClient
                         shortMessage = shortMessage.Substring(0, 16);
                     }
 
+                    Logging.TryLog(ip, "Connected to socket at IP: " + ip);
                     smartbenches.Add(new SmartBench(ip, shortMessage, message));
                     socket.Close();
                 }
@@ -90,7 +92,7 @@ namespace YetiFTPClient
         private List<String> GetIPRange(string defaultGateway, int min, int max)
         {
             var ips = new List<string>();
-            for(var i = min; i < max; i++)
+            for (var i = min; i < max; i++)
             {
                 ips.Add($"{defaultGateway}.{i}");
             }
