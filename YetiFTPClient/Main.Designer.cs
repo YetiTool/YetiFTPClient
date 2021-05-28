@@ -37,6 +37,7 @@ namespace YetiFTPClient
             this.HelpLabel = new System.Windows.Forms.Label();
             this.HelpButton = new System.Windows.Forms.Button();
             this.RetryIcon = new System.Windows.Forms.PictureBox();
+            this.SaveLogs = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RetryIcon)).BeginInit();
@@ -127,6 +128,18 @@ namespace YetiFTPClient
             this.RetryIcon.TabStop = false;
             this.RetryIcon.Click += new System.EventHandler(this.RetryIcon_Click);
             // 
+            // SaveLogs
+            // 
+            this.SaveLogs.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SaveLogs.AutoSize = true;
+            this.SaveLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SaveLogs.Location = new System.Drawing.Point(438, 165);
+            this.SaveLogs.Name = "SaveLogs";
+            this.SaveLogs.Size = new System.Drawing.Size(84, 20);
+            this.SaveLogs.TabIndex = 9;
+            this.SaveLogs.Text = "Save Logs";
+            this.SaveLogs.Click += new System.EventHandler(this.SaveLogs_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -134,6 +147,7 @@ namespace YetiFTPClient
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(534, 561);
+            this.Controls.Add(this.SaveLogs);
             this.Controls.Add(this.RetryIcon);
             this.Controls.Add(this.HelpLabel);
             this.Controls.Add(this.HelpButton);
@@ -163,6 +177,7 @@ namespace YetiFTPClient
         private System.Windows.Forms.Label HelpLabel;
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.PictureBox RetryIcon;
+        private System.Windows.Forms.Label SaveLogs;
     }
 }
 

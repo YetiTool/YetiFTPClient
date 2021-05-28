@@ -113,5 +113,10 @@ namespace YetiFTPClient
             TitleLabel.Text = "Refreshing...";
             Task.Run(() => { NewScan(GetGateway()); });
         }
+
+        private void SaveLogs_Click(object sender, EventArgs e)
+        {
+            Logging.SaveLogs();
+        }
     }
 }

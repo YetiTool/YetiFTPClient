@@ -18,34 +18,40 @@ namespace YetiFTPClient
             this.defaultGateway = defaultGateway;
         }
 
-        //Scan all IPs in parallel for a successful return
-        //Remove last macip for release version
         public List<String> GetConnections()
         {
-            var openIps = new List<String>();
+            var openIPs = new List<String>();
 
             Parallel.ForEach(GetIPRange(defaultGateway, 0, 255), ip =>
             {
                 try
                 {
                     Ping ping = new Ping();
-                    PingReply reply = ping.Send(ip, 30);
-                    if (reply.Status == IPStatus.Success)
-                        if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01"))
+
+                    PingReply reply = ping.Send(ip, 100);
+                    if(reply.Status == IPStatus.Success)
+                    {
+                        try
                         {
-                            openIps.Add(ip);
+                            if(GetMacByIp(ip).StartsWith("b8-27-eb") || GetMacByIp(ip).StartsWith("dc-a6-32") || GetMacByIp(ip).StartsWith("e4-5f-01"))
+                            {
+                                openIPs.Add(ip);
+                            }
+                        } catch
+                        {
+                            Logging.TryLog(ip, "Failed to retrieve MAC IP from device at: " + ip);
                         }
+                    }
                 } catch
                 {
-                    System.Diagnostics.Debug.WriteLine("Couldn't ping/get MAC ip");
+                    Logging.TryLog(ip, "Couldn't ping device at: " + ip);
                 }
             });
 
-            System.Diagnostics.Debug.WriteLine("Found " + openIps.Count + " Pis");
-
-            return openIps;
+            return openIPs;
         }
 
+        //Create socket connections to get smartbenches and their nmaes.
         public List<SmartBench> GetSmartbenches()
         {
             var smartbenches = new List<SmartBench>();
@@ -73,7 +79,8 @@ namespace YetiFTPClient
                 }
                 catch
                 {
-                    System.Diagnostics.Debug.WriteLine("Couldn't connect to socket @" + ip);
+                    Logging.TryLog(ip, "Couldn't connect to SmartBench socket to retrieve name");
+                    Logging.TryLog(ip, "SmartTransfer requires your SmartBench to be running Easycut 1.7.0 or higher");
                 }
             });
             return smartbenches;
@@ -101,7 +108,7 @@ namespace YetiFTPClient
                     return pair.MacAddress;
             }
 
-            throw new Exception($"Can't retrieve mac address from ip: {ip}");
+            throw new Exception("");
         }
 
         public IEnumerable<MacIpPair> GetMacIpPairs()
