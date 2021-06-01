@@ -34,6 +34,7 @@ namespace YetiFTPClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.SelectedBench = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TransferCount = new System.Windows.Forms.Label();
             this.CrossIcon = new System.Windows.Forms.PictureBox();
             this.TickIcon = new System.Windows.Forms.PictureBox();
             this.UploadingGIF = new System.Windows.Forms.PictureBox();
@@ -83,6 +84,7 @@ namespace YetiFTPClient
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.TransferCount);
             this.panel2.Controls.Add(this.CrossIcon);
             this.panel2.Controls.Add(this.TickIcon);
             this.panel2.Controls.Add(this.UploadingGIF);
@@ -93,6 +95,15 @@ namespace YetiFTPClient
             this.panel2.Size = new System.Drawing.Size(497, 299);
             this.panel2.TabIndex = 4;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // TransferCount
+            // 
+            this.TransferCount.Font = new System.Drawing.Font("Raleway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TransferCount.Location = new System.Drawing.Point(47, 240);
+            this.TransferCount.Name = "TransferCount";
+            this.TransferCount.Size = new System.Drawing.Size(403, 47);
+            this.TransferCount.TabIndex = 11;
+            this.TransferCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // CrossIcon
             // 
@@ -139,9 +150,9 @@ namespace YetiFTPClient
             // TransferLabel
             // 
             this.TransferLabel.Font = new System.Drawing.Font("Raleway", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TransferLabel.Location = new System.Drawing.Point(47, 149);
+            this.TransferLabel.Location = new System.Drawing.Point(47, 112);
             this.TransferLabel.Name = "TransferLabel";
-            this.TransferLabel.Size = new System.Drawing.Size(403, 80);
+            this.TransferLabel.Size = new System.Drawing.Size(403, 138);
             this.TransferLabel.TabIndex = 0;
             this.TransferLabel.Text = "Drag and drop your files here";
             this.TransferLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -241,5 +252,6 @@ namespace YetiFTPClient
         private System.Windows.Forms.PictureBox UploadingGIF;
         private System.Windows.Forms.PictureBox TickIcon;
         private System.Windows.Forms.PictureBox CrossIcon;
+        private System.Windows.Forms.Label TransferCount;
     }
 }

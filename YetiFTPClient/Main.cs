@@ -44,6 +44,8 @@ namespace YetiFTPClient
                 AddBench(bench);
             }
 
+            System.Diagnostics.Debug.WriteLine("Scan done");
+
             if (benches.Count < 1)
                 if (TitleLabel.InvokeRequired)
                     TitleLabel.Invoke(new MethodInvoker(delegate { TitleLabel.Text = "Couldn't find any SmartBenches"; }));

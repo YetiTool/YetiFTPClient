@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -40,34 +41,68 @@ namespace YetiFTPClient
             FileDropped(sender, e);
         }
 
+        private string GetTemporaryDirectory()
+        {
+            string tempFolder = Path.GetTempFileName();
+            File.Delete(tempFolder);
+            Directory.CreateDirectory(tempFolder);
+            return tempFolder;
+        }
+
+        //TODO: Cleanup 
+        //Move .visible into seperate functions e.g.
+        //TransferFailed()
+        //TransferSuccessful()
         private async void FileDropped(object sender, DragEventArgs e)
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            int transferCount = 0;
             foreach (string file in files)
             {
-                UploadIcon.Visible = false;
-                UploadingGIF.Visible = true;
-                TransferLabel.Text = "Transferring...";
-                bool success = false;
-                await Task.Run(() =>
+                FileAttributes attr = File.GetAttributes(file);
+                if (file.EndsWith(".gcode") || file.EndsWith(".nc") || attr.HasFlag(FileAttributes.Directory))
                 {
-                    success = connection.Upload(file);
-                });
+                    transferCount += 1;
+                    if (attr.HasFlag(FileAttributes.Directory))
+                    {
+                        transferCount += new DirectoryInfo(file).GetFiles().Length;
+                    }
 
-                if (success)
-                {
-                    UploadingGIF.Visible = false;
+                    UploadIcon.Visible = false;
                     CrossIcon.Visible = false;
-                    TickIcon.Visible = true;
-                    TransferLabel.Text = "Transfer Successful";
+                    UploadingGIF.Visible = true;
+                    TransferLabel.Text = "Transferring " + Path.GetFileName(file);
+                    TransferCount.Text = "";
+                    bool success = false;
+                    await Task.Run(() =>
+                    {
+                        success = connection.Upload(file);
+                    });
+
+                    if (success)
+                    {
+                        UploadingGIF.Visible = false;
+                        CrossIcon.Visible = false;
+                        TickIcon.Visible = true;
+                        TransferLabel.Text = "Transfer Successful";
+                        TransferCount.Text = "Files transferred: " + transferCount;
+                    }
+                    else
+                    {
+                        TickIcon.Visible = false;
+                        UploadingGIF.Visible = false;
+                        CrossIcon.Visible = true;
+                        TransferLabel.Text = "Transfer Failed";
+                    }
                 } else
                 {
+                    UploadIcon.Visible = false;
                     TickIcon.Visible = false;
                     UploadingGIF.Visible = false;
                     CrossIcon.Visible = true;
                     TransferLabel.Text = "Transfer Failed";
+                    TransferCount.Text = "The file you tried to upload is not a job file!";
                 }
-
             }
         }
 
