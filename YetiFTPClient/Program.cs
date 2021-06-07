@@ -1,6 +1,7 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace YetiFTPClient
@@ -33,29 +34,34 @@ namespace YetiFTPClient
             HttpClient client = new HttpClient();
             string url = "https://version.yetitool.com/api/version";
             string version;
+            Versions versions = null;
 
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
-                    version = await response.Content.ReadAsStringAsync();
+                    var content = await response.Content.ReadAsStringAsync();
+
+                    content = JToken.Parse(content).ToString();
+
+                    versions = JsonConvert.DeserializeObject<Versions>(content);
+                    version = versions.Latest;
                 }
                 else
                 {
                     version = Application.ProductVersion;
                 }
 
-
-                var latest = new Version(version.Replace("\"", ""));
+                var latest = new Version(version);
                 var current = new Version(Application.ProductVersion);
 
                 if (latest.CompareTo(current) > 0)
                 {
-                    Update update = new Update();
+                    Update update = new Update(versions);
                     update.ShowDialog();
                 }
-            } catch(HttpRequestException)
+            } catch
             {
                 return;
             }

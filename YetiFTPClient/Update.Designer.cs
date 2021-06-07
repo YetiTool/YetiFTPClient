@@ -34,6 +34,8 @@ namespace YetiFTPClient
             this.YesButton = new System.Windows.Forms.Button();
             this.NoButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ChangeLogs = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -48,7 +50,7 @@ namespace YetiFTPClient
             // 
             // YesButton
             // 
-            this.YesButton.Location = new System.Drawing.Point(88, 110);
+            this.YesButton.Location = new System.Drawing.Point(88, 292);
             this.YesButton.Name = "YesButton";
             this.YesButton.Size = new System.Drawing.Size(132, 37);
             this.YesButton.TabIndex = 1;
@@ -58,7 +60,7 @@ namespace YetiFTPClient
             // 
             // NoButton
             // 
-            this.NoButton.Location = new System.Drawing.Point(257, 110);
+            this.NoButton.Location = new System.Drawing.Point(257, 292);
             this.NoButton.Name = "NoButton";
             this.NoButton.Size = new System.Drawing.Size(132, 37);
             this.NoButton.TabIndex = 2;
@@ -70,25 +72,49 @@ namespace YetiFTPClient
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(118, 70);
+            this.label2.Location = new System.Drawing.Point(118, 252);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(240, 19);
             this.label2.TabIndex = 3;
             this.label2.Text = "Would you like to update now?";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(187, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 19);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Change Log:";
+            // 
+            // ChangeLogs
+            // 
+            this.ChangeLogs.Enabled = false;
+            this.ChangeLogs.Font = new System.Drawing.Font("Raleway", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ChangeLogs.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.ChangeLogs.Location = new System.Drawing.Point(6, 88);
+            this.ChangeLogs.Name = "ChangeLogs";
+            this.ChangeLogs.ReadOnly = true;
+            this.ChangeLogs.Size = new System.Drawing.Size(464, 146);
+            this.ChangeLogs.TabIndex = 5;
+            this.ChangeLogs.Text = "";
+            // 
             // Update
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 177);
+            this.ClientSize = new System.Drawing.Size(477, 361);
+            this.Controls.Add(this.ChangeLogs);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NoButton);
             this.Controls.Add(this.YesButton);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(493, 216);
-            this.MinimumSize = new System.Drawing.Size(493, 216);
+            this.MaximumSize = new System.Drawing.Size(493, 400);
+            this.MinimumSize = new System.Drawing.Size(493, 400);
             this.Name = "Update";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,5 +127,7 @@ namespace YetiFTPClient
         private System.Windows.Forms.Button YesButton;
         private System.Windows.Forms.Button NoButton;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox ChangeLogs;
     }
 }
