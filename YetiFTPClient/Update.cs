@@ -12,6 +12,7 @@ namespace YetiFTPClient
             var name = Application.ProductName;
             var version = Application.ProductVersion;
             this.Text = String.Format("{0} | Loading (v{1})", name, version);
+            this.Focus();
         }
 
         private void YesButton_Click(object sender, EventArgs e)

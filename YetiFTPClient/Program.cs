@@ -34,23 +34,30 @@ namespace YetiFTPClient
             string url = "https://version.yetitool.com/api/version";
             string version;
 
-            HttpResponseMessage response = await client.GetAsync(url);
-            if(response.IsSuccessStatusCode)
+            try
             {
-                version = await response.Content.ReadAsStringAsync();
-            } else
-            {
-                version = Application.ProductVersion;
-            }
+                HttpResponseMessage response = await client.GetAsync(url);
+                if (response.IsSuccessStatusCode)
+                {
+                    version = await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    version = Application.ProductVersion;
+                }
 
 
-            var latest = new Version(version.Replace("\"", ""));
-            var current = new Version(Application.ProductVersion);
+                var latest = new Version(version.Replace("\"", ""));
+                var current = new Version(Application.ProductVersion);
 
-            if(latest.CompareTo(current) > 0)
+                if (latest.CompareTo(current) > 0)
+                {
+                    Update update = new Update();
+                    update.ShowDialog();
+                }
+            } catch(HttpRequestException)
             {
-                Update update = new Update();
-                update.ShowDialog();
+                return;
             }
         }
     }
