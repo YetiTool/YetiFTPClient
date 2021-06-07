@@ -41,14 +41,6 @@ namespace YetiFTPClient
             FileDropped(sender, e);
         }
 
-        private string GetTemporaryDirectory()
-        {
-            string tempFolder = Path.GetTempFileName();
-            File.Delete(tempFolder);
-            Directory.CreateDirectory(tempFolder);
-            return tempFolder;
-        }
-
         //TODO: Cleanup 
         //Move .visible into seperate functions e.g.
         //TransferFailed()

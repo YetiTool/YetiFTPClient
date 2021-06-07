@@ -22,6 +22,9 @@ namespace YetiFTPClient
         {
             var openIPs = new List<String>();
 
+            if (defaultGateway == "")
+                return new List<String>();
+
             Parallel.ForEach(GetIPRange(defaultGateway, 0, 255), ip =>
             {
                 Ping ping = new Ping();
@@ -70,9 +73,10 @@ namespace YetiFTPClient
 
                     string shortMessage = message;
                     shortMessage = shortMessage.Replace("\n", "");
-                    if (shortMessage.Length > 16)
+                    if (shortMessage.Length > 18)
                     {
-                        shortMessage = shortMessage.Substring(0, 16);
+                        shortMessage = shortMessage.Substring(0, 18);
+                        shortMessage += "..";
                     }
 
                     Logging.TryLog(ip, "Connected to socket at IP: " + ip);

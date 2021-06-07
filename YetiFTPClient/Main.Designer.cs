@@ -133,12 +133,13 @@ namespace YetiFTPClient
             this.SaveLogs.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.SaveLogs.AutoSize = true;
             this.SaveLogs.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SaveLogs.Location = new System.Drawing.Point(437, 165);
+            this.SaveLogs.Location = new System.Drawing.Point(314, 525);
             this.SaveLogs.Name = "SaveLogs";
             this.SaveLogs.Size = new System.Drawing.Size(85, 20);
             this.SaveLogs.TabIndex = 9;
             this.SaveLogs.Text = "Scan Logs";
             this.SaveLogs.Click += new System.EventHandler(this.SaveLogs_Click);
+            this.SaveLogs.Paint += new System.Windows.Forms.PaintEventHandler(this.ScanLogs_Paint);
             // 
             // MainForm
             // 

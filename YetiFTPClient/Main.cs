@@ -5,6 +5,7 @@ using System.Net;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace YetiFTPClient
 {
@@ -16,7 +17,7 @@ namespace YetiFTPClient
             InitializeComponent();
 
             //Get default gateway
-            string defaultGateway = GetGateway();
+            string defaultGateway = GetDefaultGateway();
 
             //Start scan
             NewScan(defaultGateway);
@@ -53,6 +54,47 @@ namespace YetiFTPClient
                     TitleLabel.Text = "Couldn't find any SmartBenches";
         }
 
+        private string GetDefaultGateway()
+        {
+            try
+            {
+                var host = Dns.GetHostEntry(Dns.GetHostName());
+                Dictionary<bool, string> dict = new Dictionary<bool, string>();
+                foreach(var ip in host.AddressList)
+                {
+                    if(ip.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                    {
+                        dict.Add(ip.ToString().StartsWith("192"), ip.ToString());
+                    }
+                }
+
+                if(dict.ContainsKey(true))
+                {
+                    foreach(var pair in dict)
+                    {
+                        if (pair.Key == true)
+                        {
+                            string gateway = pair.Value;
+                            string[] split = gateway.Split(".");
+
+                            return split[0] + "." + split[1] + "." + split[2];
+                        }
+                    }
+                } else
+                {
+                    string gateway = dict.First().Value;
+                    string[] split = gateway.Split(".");
+
+                    return split[0] + "." + split[1] + "." + split[2];
+                }
+            } catch
+            {
+                Logging.TryLog("Connection Error", "Couldn't find compatible adapter");
+            }
+
+            return "";
+        }
+
         //Get default gateway
         private string GetGateway()
         {
@@ -69,8 +111,7 @@ namespace YetiFTPClient
                     }
                 }
             }
-
-            return null;
+            return "";
         }
 
         //Add smartbench to list by object of bench storing ip, name and the ftp connection object
@@ -116,12 +157,18 @@ namespace YetiFTPClient
         {
             tableLayoutPanel1.Controls.Clear();
             TitleLabel.Text = "Refreshing...";
-            Task.Run(() => { NewScan(GetGateway()); });
+            Task.Run(() => { NewScan(GetDefaultGateway()); });
         }
 
         private void SaveLogs_Click(object sender, EventArgs e)
         {
             Logging.SaveLogs();
+        }
+
+        private void ScanLogs_Paint(object sender, PaintEventArgs e)
+        {
+            new ToolTip().SetToolTip(SaveLogs, "This will save a log file to your desktop that can be used to diagnose issues.");
+            e.Graphics.DrawRectangle(new Pen(Brushes.Black), new Rectangle(0, 0, SaveLogs.Width - 1, SaveLogs.Height - 1));
         }
     }
 }

@@ -6,7 +6,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <AssemblyName>Yeti Tool SmartTransfer</AssemblyName>
-    <Version>0.1.0</Version>
+    <Version>0.2.0</Version>
     <Authors>Archie Jarvis</Authors>
     <Company>Yeti Tool</Company>
     <Product>SmartTransfer</Product>
@@ -14,6 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoUpdateProjectsMinimumRequiredClickOnceVersion" Version="1.1.0" />
     <PackageReference Include="WinSCP" Version="5.17.10" />
   </ItemGroup>
 
